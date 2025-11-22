@@ -1,0 +1,14 @@
+<div class="container">
+  <h2>Liste des Événements</h2>
+
+  <div class="card-list">
+    <div *ngFor="let event of events" class="card" style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
+      <h3>{{ event.titre }}</h3>
+      <p><strong>Lieu :</strong> {{ event.lieu }}</p>
+      <p><strong>Date :</strong> {{ event.date }}</p>
+      <p>{{ event.description }}</p>
+    </div>
+  </div>
+  
+  <p *ngIf="events.length === 0">Aucun événement dans la liste.</p>
+</div>

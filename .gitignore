@@ -5,3 +5,8 @@
 **/.vscode/
 **/.idea/
 **.class
+# Ignorer les bases de données H2
+*.db
+*.mv.db
+*.trace.db
+event_db*
