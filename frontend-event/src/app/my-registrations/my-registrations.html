@@ -1,0 +1,35 @@
+<div class="container" style="padding: 20px;">
+    <h2>Mes Inscriptions</h2>
+
+    <table border="1" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th style="padding: 10px;">ID Inscription</th>
+                <th style="padding: 10px;">ID Événement</th>
+                <th style="padding: 10px;">Date d'inscription</th>
+                <th style="padding: 10px;">Statut</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of inscriptions">
+                <td style="padding: 10px; text-align: center;">{{ item.inscription.id }}</td>
+
+                <td style="padding: 10px;">
+                    <strong>{{ item.event.titre }}</strong><br>
+                    <small>{{ item.event.lieu }}</small>
+                </td>
+
+                <td style="padding: 10px;">{{ item.inscription.dateInscription }}</td>
+                <td style="padding: 10px; text-align: center;">
+                    <span style="background: #d4edda; color: #155724; padding: 5px 10px; border-radius: 4px;">
+                        {{ item.inscription.statut }}
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p *ngIf="inscriptions.length === 0" style="margin-top: 20px; text-align: center;">
+        Vous n'êtes inscrit à aucun événement pour le moment.
+    </p>
+</div>

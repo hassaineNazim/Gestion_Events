@@ -1,0 +1,33 @@
+<div class="container" style="max-width: 600px; margin: auto; padding: 20px;">
+    <h2>Créer un nouvel événement</h2>
+
+    <form (ngSubmit)="onSubmit()">
+
+        <div style="margin-bottom: 15px;">
+            <label>Titre :</label>
+            <input type="text" [(ngModel)]="event.titre" name="titre" required style="width: 100%; padding: 8px;">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label>Description :</label>
+            <textarea [(ngModel)]="event.description" name="description" required
+                style="width: 100%; padding: 8px;"></textarea>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label>Lieu :</label>
+            <input type="text" [(ngModel)]="event.lieu" name="lieu" required style="width: 100%; padding: 8px;">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label>Date :</label>
+            <input type="date" [(ngModel)]="event.date" name="date" required style="width: 100%; padding: 8px;">
+        </div>
+
+        <button type="submit"
+            style="background: green; color: white; padding: 10px 20px; border: none; cursor: pointer;">
+            Enregistrer l'événement
+        </button>
+
+    </form>
+</div>
