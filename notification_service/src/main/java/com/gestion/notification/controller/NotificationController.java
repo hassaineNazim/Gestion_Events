@@ -1,4 +1,4 @@
-package com.gestion.notification_service.controller;
+package com.gestion.notification.controller;
 
 import org.springframework.web.bind.annotation.*;
 
