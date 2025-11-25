@@ -1,14 +1,29 @@
-<div style="text-align:center; padding: 20px;">
-  <h1>Projet Gestion d'Événements</h1>
-  <nav>
-    <button routerLink="/events" style="margin: 10px; font-size: 18px;">Voir les Événements</button>
-    <button routerLink="/create-event" style="margin: 10px; font-size: 18px;">Créer un Événement</button>
-    <button routerLink="/my-registrations"
-      style="margin: 10px; font-size: 18px; text-decoration: none; color: #007bff; font-weight: bold;">Mes
-      Inscriptions</button>
-  </nav>
+<div class="app-layout">
+  <header class="app-header">
+    <div class="container header-content">
+      <div class="logo">
+        <span class="logo-icon">✨</span>
+        <span class="logo-text">EventFlow</span>
+      </div>
+      <nav class="main-nav">
+        <a routerLink="/events" routerLinkActive="active" class="nav-link">
+          Événements
+        </a>
+        <a routerLink="/create-event" routerLinkActive="active" class="nav-link">
+          Créer
+        </a>
+        <a routerLink="/my-registrations" routerLinkActive="active" class="nav-link">
+          Mes Inscriptions
+        </a>
+      </nav>
+      <div class="header-actions">
+        <!-- Placeholder for future user profile or actions -->
+        <button class="btn btn-primary btn-sm">Connexion</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content container">
+    <router-outlet></router-outlet>
+  </main>
 </div>
-
-<hr>
-
-<router-outlet></router-outlet>

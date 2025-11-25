@@ -1,0 +1,43 @@
+<div class="page-header">
+    <div class="header-title">
+        <a routerLink="/events" class="back-link">
+            <span class="back-icon">←</span> Retour
+        </a>
+        <h2>Participants</h2>
+        <p class="subtitle">Gestion des inscriptions pour l'événement #{{ eventId }}</p>
+    </div>
+</div>
+
+<div class="table-container" *ngIf="inscriptions.length > 0; else noParticipants">
+    <table class="participants-table">
+        <thead>
+            <tr>
+                <th>ID Participant</th>
+                <th>Date d'inscription</th>
+                <th>Statut</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ins of inscriptions">
+                <td class="id-cell">
+                    <span class="id-badge">#{{ ins.participantId }}</span>
+                </td>
+                <td>{{ ins.dateInscription }}</td>
+                <td>
+                    <span class="status-badge" [class.status-confirmed]="ins.statut === 'CONFIRMED'"
+                        [class.status-pending]="ins.statut === 'PENDING'">
+                        {{ ins.statut }}
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #noParticipants>
+    <div class="empty-state">
+        <div class="empty-icon">👥</div>
+        <h3>Aucun participant</h3>
+        <p>Il n'y a pas encore d'inscriptions pour cet événement.</p>
+    </div>
+</ng-template>

@@ -1,32 +1,44 @@
-<div class="container" style="padding: 20px;">
-  <h2>Liste des Événements</h2>
-
-  <a routerLink="/create-event"
-    style="display:inline-block; margin-bottom: 20px; padding: 10px; background: #007bff; color: white; text-decoration: none; border-radius: 5px;">
-    + Ajouter un événement
+<div class="page-header">
+  <div class="header-title">
+    <h2>Événements à venir</h2>
+    <p class="subtitle">Découvrez et participez aux meilleurs événements</p>
+  </div>
+  <a routerLink="/create-event" class="btn btn-primary">
+    <span>+</span> Créer un événement
   </a>
+</div>
 
-  <div class="card-list" style="display: flex; flex-wrap: wrap; gap: 20px;">
-
-    <div *ngFor="let event of events" class="card"
-      style="border: 1px solid #ccc; padding: 15px; width: 300px; border-radius: 8px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
-
-      <h3 style="margin-top: 0;">{{ event.titre }}</h3>
-      <p style="color: #666;"><strong>{{ event.date }}</strong> à {{ event.lieu }}</p>
-      <p>{{ event.description }}</p>
-
-      <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
-
-      <button (click)="sInscrire(event.id)"
-        style="width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; cursor: pointer; border-radius: 4px; font-weight: bold;">
-        S'inscrire
-      </button>
-
+<div class="event-grid" *ngIf="events?.length > 0; else noEvents">
+  <div *ngFor="let event of events" class="card event-card">
+    <div class="card-content">
+      <div class="event-date">
+        <span class="date-icon">📅</span>
+        {{ event.date }}
+      </div>
+      <h3 class="event-title">{{ event.titre }}</h3>
+      <div class="event-location">
+        <span class="location-icon">📍</span>
+        {{ event.lieu }}
+      </div>
+      <p class="event-description">{{ event.description }}</p>
     </div>
 
+    <div class="card-actions">
+      <button (click)="sInscrire(event.id)" class="btn btn-primary btn-full">
+        S'inscrire
+      </button>
+      <button [routerLink]="['/event-participants', event.id]" class="btn btn-secondary btn-full btn-outline">
+        Voir les inscrits
+      </button>
+    </div>
   </div>
-
-  <p *ngIf="events?.length === 0" style="text-align: center; color: #888; margin-top: 40px;">
-    Aucun événement disponible pour le moment.
-  </p>
 </div>
+
+<ng-template #noEvents>
+  <div class="empty-state">
+    <div class="empty-icon">📅</div>
+    <h3>Aucun événement pour le moment</h3>
+    <p>Soyez le premier à créer un événement !</p>
+    <a routerLink="/create-event" class="btn btn-primary">Créer un événement</a>
+  </div>
+</ng-template>
