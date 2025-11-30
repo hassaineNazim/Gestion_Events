@@ -8,7 +8,7 @@
   </a>
 </div>
 
-<div class="event-grid" *ngIf="events?.length > 0; else noEvents">
+<div class="event-grid" *ngIf="events.length > 0; else noEvents">
   <div *ngFor="let event of events" class="card event-card">
     <div class="card-content">
       <div class="event-date">
