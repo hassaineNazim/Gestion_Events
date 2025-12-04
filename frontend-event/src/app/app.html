@@ -5,7 +5,7 @@
         <span class="logo-icon">✨</span>
         <span class="logo-text">EventFlow</span>
       </div>
-      <nav class="main-nav">
+      <nav class="main-nav" *ngIf="authService.isLoggedIn()">
         <a routerLink="/events" routerLinkActive="active" class="nav-link">
           Événements
         </a>
@@ -18,7 +18,11 @@
       </nav>
       <div class="header-actions">
         <!-- Placeholder for future user profile or actions -->
-        <button class="btn btn-primary btn-sm">Connexion</button>
+        <ng-container *ngIf="!authService.isLoggedIn()">
+          <a routerLink="/login" class="btn btn-primary btn-sm">Connexion</a>
+          <a routerLink="/register" class="btn btn-outline-primary btn-sm" style="margin-left: 10px;">Inscription</a>
+        </ng-container>
+        <button *ngIf="authService.isLoggedIn()" (click)="logout()" class="btn btn-danger btn-sm">Déconnexion</button>
       </div>
     </div>
   </header>
